@@ -4,7 +4,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
-public class Main extends Canvas 
+
+public class MainWindow extends Canvas 
 {
 	public static int[] pixelLocationsX;
 	public static int[] pixelLocationsY;
@@ -32,7 +33,7 @@ public class Main extends Canvas
 		pixelLocationsX = new int[8];
 		pixelLocationsY = new int[8];
 
-		Main m=new Main();  
+		MainWindow m=new MainWindow();  
     JFrame f=new JFrame();  
     f.add(m);  
     f.setSize(250,250);  

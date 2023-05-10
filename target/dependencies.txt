@@ -1,0 +1,5 @@
+digraph "mygroupid:myartifactid:jar:0.0-SNAPSHOT" { 
+	"mygroupid:myartifactid:jar:0.0-SNAPSHOT" -> "junit:junit:jar:4.12:compile" ; 
+	"mygroupid:myartifactid:jar:0.0-SNAPSHOT" -> "com.googlecode.json-simple:json-simple:jar:1.1.1:compile" ; 
+	"mygroupid:myartifactid:jar:0.0-SNAPSHOT" -> "org.hamcrest:hamcrest-core:jar:1.3:compile" ; 
+ } 
