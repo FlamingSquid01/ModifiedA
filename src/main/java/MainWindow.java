@@ -1,6 +1,11 @@
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.*;
 
 import javax.swing.JFrame;
 
@@ -18,22 +23,29 @@ public class MainWindow extends Canvas
 
   static Toolkit toolkit;
 
+  Graphics2D graphics;
+
   public MainWindow(){
 	addMouseListener(new MouseAdapter() { 
 		public void mousePressed(MouseEvent me) { 
-		 System.out.println(me); 
+		 cursorX = me.getX();
+		 cursorY = me.getY();
+		 DrawNode();
 		} 
 	}); 
   }
 
-	public void paintInit(Graphics g) 
+	public void paint(Graphics g) 
 	{  
-		if(toolkit == null)
-		{
-			Graphics2D graphic2d = (Graphics2D) g;
-			g.drawImage(nodeImg, cursorX, cursorY, 4, 4, getBackground(), getFocusCycleRootAncestor());
-		}
+		Graphics2D graphic2d = (Graphics2D) g;
+		graphics = graphic2d;
 	}  
+
+	public void DrawNode(){
+		Graphics g = nodeImg.getGraphics();
+		g.drawImage(nodeImg, cursorX, cursorY, 24, 24, getBackground(), null);
+		System.out.println("h");
+	}
 
 	public static void main(String[] args)
 	{
@@ -45,6 +57,11 @@ public class MainWindow extends Canvas
     	f.add(m);  
     	f.setSize(1000,1000);  
     	f.setVisible(true); 
+		
+		try{
+			nodeImg = ImageIO.read(new File("src/main/Img/Node.png"));
+		} catch (IOException e){}
+		
 
 		if(toolkit == null)
 		{
@@ -53,10 +70,4 @@ public class MainWindow extends Canvas
 
 		
 	}
-
-    private static Point cursorLocation()
-    {
-      return MouseInfo.getPointerInfo().getLocation();
-    }
-
 }
