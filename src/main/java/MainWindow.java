@@ -14,6 +14,8 @@ public class MainWindow extends Canvas
   public static int cursorX;
   public static int cursorY;
 
+  public static Image nodeImg;
+
   static Toolkit toolkit;
 
   public MainWindow(){
@@ -28,7 +30,8 @@ public class MainWindow extends Canvas
 	{  
 		if(toolkit == null)
 		{
-			toolkit = Toolkit.getDefaultToolkit();
+			Graphics2D graphic2d = (Graphics2D) g;
+			g.drawImage(nodeImg, cursorX, cursorY, 4, 4, getBackground(), getFocusCycleRootAncestor());
 		}
 	}  
 
